@@ -24,7 +24,6 @@ public class RungeKuttaExample {
         Vector2 newSolution;
 
         while (time < 1) {
-            System.out.println(solution);
             Vector2 k1 = function(solution, time).mult(step);
             Vector2 k2 = function(solution.sum(k1), time + step*(1d/3d)).mult(step).mult(1d/3d);
             Vector2 k3 = function(solution.sum(k1.mult(0.5)).sum(k2.mult(0.5)), time + step*(1d/3d)).mult(step).mult(1d/3d);
@@ -47,6 +46,7 @@ public class RungeKuttaExample {
             solution = newSolution;
             time += step;
         }
+        System.out.println(solution);
     }
 
     public static Vector2 function(Vector2 solution, double time) {
