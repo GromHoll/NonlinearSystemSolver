@@ -26,7 +26,9 @@ public class NewtonPolynomialSolver implements PolynomialSolver {
         Arrays.fill(solution, 0);
         Arrays.fill(newSolution, 0);
 
+        int iter = 0;
         do {
+            iter++;
             double[][] matrix = new double[dimension][dimension];
             double[] rightPart = new double[dimension];
 
@@ -46,6 +48,7 @@ public class NewtonPolynomialSolver implements PolynomialSolver {
                 newSolution[i] = solution[i] + linearSolution[i];
             }
         } while (Math.abs(norm(solution) - norm(newSolution)) >= error);
+        System.out.println(iter);
 
         return newSolution;
     }

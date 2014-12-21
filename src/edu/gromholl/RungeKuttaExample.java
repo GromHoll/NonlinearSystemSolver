@@ -23,6 +23,7 @@ public class RungeKuttaExample {
         Vector2 solution = new Vector2();
         Vector2 newSolution;
 
+        int iter = 0;
         while (time < 1) {
             Vector2 k1 = function(solution, time).mult(step);
             Vector2 k2 = function(solution.sum(k1), time + step*(1d/3d)).mult(step).mult(1d/3d);
@@ -35,6 +36,7 @@ public class RungeKuttaExample {
             Vector2 exc = k1.minus(k3.mult(4.5)).sum(k4.mult(4)).minus(k5.mult(0.5));
             if (exc.x > 5*error || exc.y > 5*error) {
                 step /= 2d;
+                iter++;
                 continue;
             }
 
@@ -46,6 +48,7 @@ public class RungeKuttaExample {
             solution = newSolution;
             time += step;
         }
+        System.out.println(iter);
         System.out.println(solution);
     }
 
