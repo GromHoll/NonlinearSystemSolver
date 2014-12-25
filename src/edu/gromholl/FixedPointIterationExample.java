@@ -19,23 +19,18 @@ public class FixedPointIterationExample {
     public static double error = 0.01;
 
     public static void main(String[] args) {
-
-        double multilayer = getMultilayer();
-
-        int iterations = 0;
-
         Vector2 diff;
         Vector2 previousSolution;
         Vector2 solution = new Vector2(0,0);
+        double multilayer = getMultilayer();
 
+        int iterations = 0;
         do {
             iterations++;
             previousSolution = solution;
             solution = previousSolution.minus(function(solution).mult(multilayer));
             diff = function(solution).minus(function(previousSolution));
         } while (abs(diff.x) > error || abs(diff.y) > error);
-
-
 
         System.out.println("Iteration count: " + iterations);
         System.out.println("Solution: " + solution);
