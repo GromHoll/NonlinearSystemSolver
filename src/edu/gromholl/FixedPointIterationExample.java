@@ -34,6 +34,7 @@ public class FixedPointIterationExample {
 
         System.out.println("Iteration count: " + iterations);
         System.out.println("Solution: " + solution);
+        System.out.println("Result: " + function(solution));
     }
 
     public static Vector2 function(Vector2 solution) {
